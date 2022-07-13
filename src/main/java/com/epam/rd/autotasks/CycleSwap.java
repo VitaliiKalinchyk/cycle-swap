@@ -10,9 +10,11 @@ class CycleSwap {
     }
 
     static void cycleSwap(int[] array, int shift) {
-        if (array!=null && array.length!=0 && shift>0)
-            for (int i = 0; i < shift; i++) {
-                cycleSwap(array);
-            }
+        if (array!=null && array.length!=0) {
+            int[] temp = new int[shift];
+            System.arraycopy(array, array.length - shift, temp, 0, shift);
+            System.arraycopy(array, 0, array, shift, array.length - shift);
+            System.arraycopy(temp, 0, array, 0, shift);
+        }
     }
 }
